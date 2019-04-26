@@ -20,7 +20,8 @@ class ElapsedTime extends React.Component {
 
     render() {
         return (
-            <h1>{this.state.seconds}</h1>
+            <h1>{this.state.seconds} seconds since page loaded
+            </h1>
         );
     }
 
