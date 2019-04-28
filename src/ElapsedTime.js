@@ -12,14 +12,6 @@ class ElapsedTime extends React.Component {
     }
 
 
-    // componentDidMount() {
-    //     setInterval(() => {
-    //         this.setState({
-    //             seconds: this.state.seconds + 1
-    //         });
-    //     }, 1000);
-    // }
-
     render() {
         return (
             <div>
@@ -40,11 +32,20 @@ class ElapsedTime extends React.Component {
     }
 
     _startStopwatch = () => {
-        this.interval = setInterval(() => {
-            this.setState({
-                seconds: this.state.seconds + 1
-            });
-        }, 1000)
+        if (!this.state.seconds) {
+            this.interval = setInterval(() => {
+                this.setState({
+                    seconds: this.state.seconds + 1
+                });
+            }, 1000)
+        } else if (this.state.seconds) {
+            clearInterval(this.interval);
+                this.interval = setInterval(() => {
+                this.setState({
+                    seconds: this.state.seconds + 1
+                });
+            }, 1000)
+        }
     }
 
     _stopStopwatch = () => {
